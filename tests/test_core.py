@@ -2,7 +2,7 @@
 
 import pytest
 import pandas as pd
-from edaio import glance, GlanceReport
+from edaio import glance, GlanceReport # type: ignore
 
 
 def test_glance_works(clean_df):

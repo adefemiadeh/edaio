@@ -3,8 +3,8 @@ name: Publish to PyPI
 on:
   push:
     tags:
-      - "v*" # Triggers on tags like v0.5.0, v1.0.0
-  workflow_dispatch: # Allows manual trigger
+      - "v*"
+  workflow_dispatch:
 
 jobs:
   test:
@@ -28,20 +28,12 @@ jobs:
           pip install -e ".[rich,plotly,dev]"
 
       - name: Run tests
-        run: |
-          pytest tests/ -v --cov=edaio
-
-      - name: Upload coverage to Codecov (optional)
-        uses: codecov/codecov-action@v4
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          fail_ci_if_error: false
+        run: pytest tests/ -v
 
   build:
     name: Build Package
     needs: test
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
 
@@ -53,13 +45,10 @@ jobs:
       - name: Install build tools
         run: |
           python -m pip install --upgrade pip
-          pip install build twine
+          pip install build
 
       - name: Build package
         run: python -m build
-
-      - name: Check package
-        run: twine check dist/*
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
@@ -71,6 +60,9 @@ jobs:
     name: Publish to PyPI
     needs: build
     runs-on: ubuntu-latest
+    environment: pypi # ← This matches what you set on PyPI
+    permissions:
+      id-token: write # ← Required for trusted publishing
     if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
 
     steps:
@@ -84,9 +76,7 @@ jobs:
 
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          password: ${{ secrets.PYPI_TOKEN }}
-          # repository_url: https://test.pypi.org/legacy/  # Uncomment for test PyPI
+        # No token needed! Trusted Publisher handles authentication
 
   release:
     name: Create GitHub Release

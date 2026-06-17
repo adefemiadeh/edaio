@@ -3,7 +3,7 @@ name = "edaio"
 version = "0.5.0"
 description = "Lightning-fast DataFrame introspection with smart red-flag suggestions"
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = ">=3.9"
 license = { text = "MIT" }
 authors = [
     { name = "Your Name", email = "you@example.com" }

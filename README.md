@@ -4,7 +4,7 @@
 
 [![PyPI version](https://badge.fury.io/py/edaio.svg)](https://badge.fury.io/py/edaio)
 [![Python versions](https://img.shields.io/pypi/pyversions/edaio.svg)](https://pypi.org/project/edaio/)
-[![Tests](https://github.com/yourusername/edaio/actions/workflows/publish.yml/badge.svg)](https://github.com/yourusername/edaio/actions)
+[![Tests](https://github.com/adefemiadeh/edaio/actions/workflows/publish.yml/badge.svg)](https://github.com/adefemiadeh/edaio/actions)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 ## 🚀 Quick Start

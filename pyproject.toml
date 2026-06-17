@@ -1,6 +1,6 @@
 [project]
 name = "edaio"
-version = "0.5.2"
+version = "0.5.3"
 description = "Lightning-fast DataFrame introspection with smart red-flag suggestions"
 readme = "README.md"
 requires-python = ">=3.9"

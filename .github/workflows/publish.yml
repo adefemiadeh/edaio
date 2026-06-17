@@ -32,7 +32,7 @@ jobs:
           pytest tests/ -v --cov=edaio
 
       - name: Upload coverage to Codecov (optional)
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v7
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           fail_ci_if_error: false
